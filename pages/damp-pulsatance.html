@@ -8,12 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
 
 
 
@@ -40,39 +46,64 @@
 <meta property="og:url" content=""/>
 <meta property="og:image" content="../../images/icon.png">
 
+
+
   <title>Macalister Electronics &ndash; Damp Pulsatance</title>
 
 </head>
-<body>
+<body class="light-theme">
   <aside>
     <div>
       <a href="">
         <img src="../../images/icon.png" alt="Macalister Electronics" title="Macalister Electronics">
       </a>
-      <h1><a href="">Macalister Electronics</a></h1>
+
+      <h1>
+        <a href="">Macalister Electronics</a>
+      </h1>
 
 <p>Guitar Effects et al.</p>
+
       <nav>
         <ul class="list">
-          <li><a href="/pages/damp-pulsatance.html#damp-pulsatance">Damp Pulsatance</a></li>
-          <li><a href="/pages/damp-pulsatance-proto.html#damp-pulsatance-proto">Damp Pulsatance Prototype</a></li>
-          <li><a href="/#home">Home</a></li>
+
+
+              <li>
+                <a target="_self"
+                   href="/pages/damp-pulsatance.html#damp-pulsatance">
+                  Damp Pulsatance
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="/#home">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="/pages/damp-pulsatance-proto.html#damp-pulsatance-proto">
+                  Damp Pulsatance Prototype
+                </a>
+              </li>
 
         </ul>
       </nav>
 
       <ul class="social">
-        <li><a class="sc-twitter" href="https://twitter.com/macco_electro" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/macco_electro" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
       </ul>
     </div>
-
 
   </aside>
   <main>
 
     <nav>
-      <a href="">    Home
-</a>
+      <a href="">Home</a>
 
       <a href="/archives.html">Archives</a>
       <a href="/categories.html">Categories</a>
@@ -87,7 +118,7 @@
     <h1 id="damp-pulsatance">Damp Pulsatance</h1>
   </header>
   <div>
-<p>This is the Damp Pulsatance pedal. Its list price is £320.</p>
+<p>This is the Damp Pulsatance pedal. Its list price is £500.</p>
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/DJhujz-cVJ8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <p>I am trying to gauge interest so I can do a suitably sized production run. If you are interested please let me know
@@ -157,7 +188,7 @@ via <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#109;&#112;&#95
 
 <h1>Description</h1>
 <p>The filter section is an LM13700 tunable state-variable low-pass (almost directly as per the <a href="http://www.ti.com/lit/ds/symlink/lm13700.pdf">datasheet</a> : "Voltage-Controlled State Variable Filter"). A resonance control has been added to the datasheet topology. When this is turned up the filter approximates an auto-wah. When it is really turned up, the filter and output stages clip with predictable results. The filter centre-frequency can be controlled manually, or via a expression pedal or via the triggered L.F.O. Its input signal is the one from the Input socket, and the envelope of that signal also triggers the L.F.O. </p>
-<p>However, if the Sidechain Receive socket has something plugged into it, the envelop of that signal is used to trigger the L.F.O. The sidechain allows other effects to be added to guitar signal before the filter whilst still triggering the L.F.O. from a clean input signal in case the clean dynamics are preferred. The Sidechain Receive can of course also be used as a general-purpose trigger input and for example be fed from a drum track.</p>
+<p>However, if the Sidechain Receive socket has something plugged into it, the envelope of that signal is used to trigger the L.F.O. The sidechain allows other effects to be added to guitar signal before the filter whilst still triggering the L.F.O. from a clean input signal in case the clean dynamics are preferred. The Sidechain Receive can of course also be used as a general-purpose trigger input and for example be fed from a drum track.</p>
 <p>The L.F.O. frequency can also be controlled manually or via a expression pedal. The LFO output is a triangle wave with a shape control that allows it to be smoothly bent into both backwards- and forwards-leaning sawtooth waves. The LFO is triggered from the the built-in Envelope Detector. </p>
 <p>The Threshold control for the Envelope Detector can be set to keep the LFO always triggered or always untriggered. The Release control determines how long the Envelope Detector takes to return to the off state.</p>
 <p>The output stage allows between +3 and -∞ dB of gain. Because the resonance of the filter can get a bit silly, the output stage has clipping diodes both to keep the output levels reasonable and to allow a bit of post-distortion.</p>
@@ -281,8 +312,9 @@ via <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#109;&#112;&#95
 </article>
 
     <footer>
-<p>&copy;  2019</p>
-<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+<p>&copy; 2019 </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p>    </footer>
   </main>
 
@@ -299,6 +331,7 @@ via <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#109;&#112;&#95
   "description": "Guitar Effects et al."
 }
 </script>
+
 
 </body>
 </html>
