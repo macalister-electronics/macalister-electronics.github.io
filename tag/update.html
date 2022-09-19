@@ -12,8 +12,15 @@
 
     <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
 
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
+    href="/theme/stylesheet/dark-theme.min.css">
 
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
+          href="/theme/pygments/monokai.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
           href="/theme/pygments/github.min.css">
 
 
@@ -37,11 +44,11 @@
     <meta name="msapplication-TileColor" content="#33333">
 
     <meta name="author" content="Iain Macalister" />
-    <meta name="description" content="Guitar Effects et al." />
+    <meta name="description" content="Guitar Effects etc." />
 <meta property="og:site_name" content="Macalister Electronics"/>
 <meta property="og:type" content="blog"/>
 <meta property="og:title" content="Macalister Electronics"/>
-<meta property="og:description" content="Guitar Effects et al."/>
+<meta property="og:description" content="Guitar Effects etc."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content=""/>
 <meta property="og:image" content="../../images/icon.png">
@@ -49,7 +56,7 @@
   <title>Macalister Electronics &ndash; Tag update</title>
 
 </head>
-<body class="light-theme">
+<body >
   <aside>
     <div>
       <a href="">
@@ -60,7 +67,7 @@
         <a href="">Macalister Electronics</a>
       </h1>
 
-<p>Guitar Effects et al.</p>
+<p>Guitar Effects etc.</p>
 
       <nav>
         <ul class="list">
@@ -68,14 +75,8 @@
 
               <li>
                 <a target="_self"
-                   href="/pages/damp-pulsatance.html#damp-pulsatance">
-                  Damp Pulsatance
-                </a>
-              </li>
-              <li>
-                <a target="_self"
-                   href="/#home">
-                  Home
+                   href="/#products">
+                  Products
                 </a>
               </li>
 
@@ -86,6 +87,11 @@
           <li>
             <a  class="sc-twitter" href="https://twitter.com/macco_electro" target="_blank">
               <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-reddit" href="https://old.reddit.com/user/MacalisterElectronic/submitted" target="_blank">
+              <i class="fab fa-reddit"></i>
             </a>
           </li>
       </ul>
@@ -129,9 +135,17 @@
 
 
     <footer>
-<p>&copy; 2020 </p>
+<p>&copy; 2022 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="dark"
+          type="text/javascript">
+  </script>
 </p>    </footer>
   </main>
 
@@ -145,7 +159,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "name": " Macalister Electronics ",
   "url" : "",
   "image": "../../images/icon.png",
-  "description": "Guitar Effects et al."
+  "description": "Guitar Effects etc."
 }
 </script>
 

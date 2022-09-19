@@ -6,14 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="" />
+    <meta name="robots" content="noindex, nofollow" />
 
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
 
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
+    href="/theme/stylesheet/dark-theme.min.css">
 
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
+          href="/theme/pygments/monokai.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
           href="/theme/pygments/github.min.css">
 
 
@@ -37,11 +44,11 @@
     <meta name="msapplication-TileColor" content="#33333">
 
     <meta name="author" content="Iain Macalister" />
-    <meta name="description" content="Guitar Effects et al." />
+    <meta name="description" content="Guitar Effects etc." />
 <meta property="og:site_name" content="Macalister Electronics"/>
 <meta property="og:type" content="blog"/>
 <meta property="og:title" content="Macalister Electronics"/>
-<meta property="og:description" content="Guitar Effects et al."/>
+<meta property="og:description" content="Guitar Effects etc."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content=""/>
 <meta property="og:image" content="../../images/icon.png">
@@ -51,7 +58,7 @@
   <title>Macalister Electronics &ndash; Damp Pulsatance</title>
 
 </head>
-<body class="light-theme">
+<body >
   <aside>
     <div>
       <a href="">
@@ -62,7 +69,7 @@
         <a href="">Macalister Electronics</a>
       </h1>
 
-<p>Guitar Effects et al.</p>
+<p>Guitar Effects etc.</p>
 
       <nav>
         <ul class="list">
@@ -70,14 +77,8 @@
 
               <li>
                 <a target="_self"
-                   href="/pages/damp-pulsatance.html#damp-pulsatance">
-                  Damp Pulsatance
-                </a>
-              </li>
-              <li>
-                <a target="_self"
-                   href="/#home">
-                  Home
+                   href="/#products">
+                  Products
                 </a>
               </li>
 
@@ -88,6 +89,11 @@
           <li>
             <a  class="sc-twitter" href="https://twitter.com/macco_electro" target="_blank">
               <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-reddit" href="https://old.reddit.com/user/MacalisterElectronic/submitted" target="_blank">
+              <i class="fab fa-reddit"></i>
             </a>
           </li>
       </ul>
@@ -391,8 +397,8 @@
 <iframe width="100%" height="200" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/458497491&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=true&visual=true"></iframe>
 
 <h2>Detailed Description</h2>
-<p>The filter section is an LM13700 tunable state-variable low-pass (almost directly as per the <a href="http://www.ti.com/lit/ds/symlink/lm13700.pdf">datasheet</a> : "Voltage-Controlled State Variable Filter"). A resonance control has been added to the datasheet topology. When this is turned up the filter approximates an auto-wah. When it is really turned up, the filter and output stages clip with predictable results. The filter centre-frequency can be controlled manually, or via a expression pedal or via the triggered L.F.O. Its input signal is the one from the Input socket, and the envelope of that signal also triggers the L.F.O. </p>
-<p>However, if the Sidechain Receive socket has something plugged into it, the envelope of that signal is used to trigger the L.F.O. The sidechain allows other effects to be added to guitar signal before the filter whilst still triggering the L.F.O. from a clean input signal in case the clean dynamics are preferred. The Sidechain Receive can of course also be used as a general-purpose trigger input and for example be fed from a drum track.</p>
+<p>The filter section is an LM13700 tunable state-variable low-pass (almost directly as per the <a href="http://www.ti.com/lit/ds/symlink/lm13700.pdf">datasheet</a> : "Voltage-Controlled State Variable Filter"). A resonance control has been added to the datasheet topology. When this is turned up the filter approximates an auto-wah. When it is really turned up, the filter and output stages clip with predictable results. The filter centre-frequency can be controlled manually, or via an expression pedal or via the triggered L.F.O. The filter's input signal is the one from the Input socket, and the envelope of that signal also triggers the L.F.O. </p>
+<p>However, if the Sidechain Receive socket has something plugged into it, the envelope of that signal is instead used to trigger the L.F.O. The sidechain allows other effects to be added to guitar signal before the filter whilst still triggering the L.F.O. from a clean input signal in case the clean dynamics are preferred. The Sidechain Receive can of course also be used as a general-purpose trigger input and for example be fed from a drum track.</p>
 <p>The L.F.O. frequency can also be controlled manually or via a expression pedal. The LFO output is a triangle wave with a shape control that allows it to be smoothly bent into both backwards- and forwards-leaning sawtooth waves. The LFO is triggered from the the built-in Envelope Detector. </p>
 <p>The Threshold control for the Envelope Detector can be set to keep the LFO always triggered or always untriggered. The Release control determines how long the Envelope Detector takes to return to the off state.</p>
 <p>The output stage allows between +3 and -∞ dB of gain. Because the resonance of the filter can get a bit silly, the output stage has clipping diodes both to keep the output levels reasonable and to allow a bit of post-distortion.</p>
@@ -400,25 +406,25 @@
 <table>
 <thead>
 <tr>
-<th align="right">LED</th>
+<th style="text-align: right;">LED</th>
 <th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right">Top</td>
+<td style="text-align: right;">Top</td>
 <td>Power indicator</td>
 </tr>
 <tr>
-<td align="right">Bottom</td>
+<td style="text-align: right;">Bottom</td>
 <td>Bypass indicator (off = bypassed)</td>
 </tr>
 <tr>
-<td align="right">Upper Middle</td>
+<td style="text-align: right;">Upper Middle</td>
 <td>Envelope detector output state (on = signal detected)</td>
 </tr>
 <tr>
-<td align="right">Lower Middle</td>
+<td style="text-align: right;">Lower Middle</td>
 <td>LFO output level / filter cut-off frequency (brighter = higher cut-off frequency)</td>
 </tr>
 </tbody>
@@ -428,61 +434,61 @@
 <table>
 <thead>
 <tr>
-<th align="right">Knob</th>
+<th style="text-align: right;">Knob</th>
 <th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"></td>
+<td style="text-align: right;"></td>
 <td><em>Envelope Detector</em></td>
 </tr>
 <tr>
-<td align="right">Threshold</td>
+<td style="text-align: right;">Threshold</td>
 <td>Signal level above which the envelope detector output is high. Clockwise for a higher level. Fully anti-clockwise will cause the output to stay high all the time and the L.F.O. to oscillate likewise.</td>
 </tr>
 <tr>
-<td align="right">Release</td>
+<td style="text-align: right;">Release</td>
 <td>Time for the envelope detector output to return to low after the input signal level goes below the threshold. Clockwise for a longer time.</td>
 </tr>
 <tr>
-<td align="right"></td>
+<td style="text-align: right;"></td>
 <td><em>L.F.O.</em></td>
 </tr>
 <tr>
-<td align="right">Shape</td>
+<td style="text-align: right;">Shape</td>
 <td>At 12 o'clock the LFO output will be a triangle wave. Fully anti-clockwise will make the L.F.O. output a sawtooth wave where the sloped edge is downward-going and vice versa for fully clockwise.</td>
 </tr>
 <tr>
-<td align="right"><em>Frequency</em></td>
+<td style="text-align: right;"><em>Frequency</em></td>
 <td>Fully anti-clockwise will set the oscillator to approximately 0.2 Hz (G<sub>-7</sub>), fully clockwise will set the oscillator to approximately 130 Hz (C<sub>3</sub>). This range can be shifted up or down by changing a capacitor on the PCB.</td>
 </tr>
 <tr>
-<td align="right"><em>Centre On</em></td>
+<td style="text-align: right;"><em>Centre On</em></td>
 <td>This adds a DC value to the oscillator output. This determines the frequency about which the V.C.F. cut-off is modulated. Turning this knob clockwise makes the filter more "open" i.e. the filter's cut-off frequency is will on average be higher.</td>
 </tr>
 <tr>
-<td align="right"><em>Depth</em></td>
+<td style="text-align: right;"><em>Depth</em></td>
 <td>The controls the oscillator output amplitude. This in turn controls how much the centre frequency of the V.C.F. is modulated. Turning this knob clockwise increases how much the V.C.F. centre-frequency is modulated.</td>
 </tr>
 <tr>
-<td align="right"></td>
+<td style="text-align: right;"></td>
 <td><em>Filter</em></td>
 </tr>
 <tr>
-<td align="right">Centre Off</td>
+<td style="text-align: right;">Centre Off</td>
 <td>This does the same thing as the Centre On knob; however, the position of this knob sets the V.C.F. cut-off frequency when the L.F.O. is not triggered. The filter cut-off can be varied between 24 Hz (G<sub>0</sub>) and 2.4 KHz (D<sub>7</sub>). This range has been optimised for bass or sub-bass synth inputs, it can be shifted up relatively easily by adding two capacitors to the PCB.</td>
 </tr>
 <tr>
-<td align="right">Resonance</td>
+<td style="text-align: right;">Resonance</td>
 <td>Turning the knob clockwise increases the filter's resonance, i.e. instead of being a simple low-pass filter it becomes a low-pass filter with a peak at the cut-off frequency.</td>
 </tr>
 <tr>
-<td align="right"></td>
+<td style="text-align: right;"></td>
 <td><em>Output Stage</em></td>
 </tr>
 <tr>
-<td align="right">Level</td>
+<td style="text-align: right;">Level</td>
 <td>Output stage gain, fully anti-clockwise mutes the output and fully clockwise sets the gain to about x2 but will be limited by clipping diodes.</td>
 </tr>
 </tbody>
@@ -516,9 +522,17 @@
 </article>
 
     <footer>
-<p>&copy; 2020 </p>
+<p>&copy; 2022 </p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="dark"
+          type="text/javascript">
+  </script>
 </p>    </footer>
   </main>
 
@@ -532,7 +546,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
   "name": " Macalister Electronics ",
   "url" : "",
   "image": "../../images/icon.png",
-  "description": "Guitar Effects et al."
+  "description": "Guitar Effects etc."
 }
 </script>
 
