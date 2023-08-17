@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
+    href="/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark), (prefers-color-scheme: no-preference)"
+          href="/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+
+
+
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#33333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#33333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#33333">
+
+<meta name="author" content="Iain Macalister" />
+<meta name="description" content="Measuring component values for guitar pickup equivalent circuits" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="Macalister Electronics"/>
+<meta property="og:title" content="Guitar Pickup Equivalent Circuits"/>
+<meta property="og:description" content="Measuring component values for guitar pickup equivalent circuits"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/guitar-pickup-equivalent-circuits.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2023-06-18 18:00:00+02:00"/>
+<meta property="article:modified_time" content="2023-06-18 18:00:00+02:00"/>
+<meta property="article:author" content="/author/iain-macalister.html">
+<meta property="article:section" content="Articles"/>
+<meta property="og:image" content="../../images/icon.png">
+
+  <title>Macalister Electronics &ndash; Guitar Pickup Equivalent Circuits</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="">
+        <img src="../../images/icon.png" alt="Macalister Electronics" title="Macalister Electronics">
+      </a>
+
+      <h1>
+        <a href="">Macalister Electronics</a>
+      </h1>
+
+<p>Guitar Effects etc.</p>
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="/#products">
+                  Products
+                </a>
+              </li>
+
+            <li>
+              <a target="_self" href="/category/articles.html" >Articles</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-twitter" href="https://twitter.com/macco_electro" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-reddit" href="https://old.reddit.com/user/MacalisterElectronic/submitted" target="_blank">
+              <i class="fab fa-reddit"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="guitar-pickup-equivalent-circuits">Guitar Pickup Equivalent Circuits</h1>
+    <p>
+      Posted on Sun 18 June 2023 in <a href="/category/articles.html">Articles</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <style>
+
+.big_rounded_image
+{
+    border-radius: 5px;
+}
+
+.small_rounded_image
+{
+    border-radius: 5%;
+}
+
+.image-container
+{
+  display: flex;
+  justify-content: center;
+}
+
+.big_linked_images
+{
+    width: 50%;
+}
+
+.wide_linked_images
+{
+    width: 90%;
+}
+
+table 
+{
+    margin: auto;
+    width: 50%;
+}
+
+.highlight
+{
+    margin: auto;
+    width: 90%;
+}
+
+</style>
+
+<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">~</a></h1>
+<p>An equivalent circuit of a guitar's pickups, tone/volume controls and cable is useful when designing input stages for effects pedals or amplifiers. It makes simulations or calculations of how input networks modify the spectrum of the guitar's output more realistic. This article covers some background on the topic and then goes into a technique for measuring the output impedance of a guitar and how to deduce the values of an equivalent circuit from the measurement.</p>
+<p>The actual values that I found for the equivalent circuit of a Stratocaster are given in the Conclusion at the end of this page.</p>
+<h1 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">~</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#measurement-setup">Measurement Setup</a></li>
+<li><a href="#raw-data">Raw Data</a></li>
+<li><a href="#analysis-component-value-inference">Analysis / Component Value Inference</a><ul>
+<li><a href="#method-1-mostly-hand-calculations">Method 1 - Mostly Hand Calculations</a><ul>
+<li><a href="#pickup-resistance">Pickup Resistance</a></li>
+<li><a href="#pickup-cable-capacitance">Pickup (+Cable) Capacitance</a></li>
+<li><a href="#pickup-inductance">Pickup Inductance</a><ul>
+<li><a href="#hand-calculable">Hand-calculable</a></li>
+<li><a href="#slightly-more-accurate-numerical-solution">Slightly more Accurate, Numerical Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#method-2-entirely-numerical">Method 2 - Entirely Numerical</a></li>
+</ul>
+</li>
+<li><a href="#comparison-of-results">Comparison of Results</a></li>
+<li><a href="#separating-out-cable-capacitance">Separating out Cable Capacitance</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">~</a></h1>
+<p>A magnetic guitar pickup is essentially a coil of wire that is used as an inductive sensor. A fairly standard equivalent circuit for a non-ideal inductor adds a series resistor representing the resistance of the windings and a parallel capacitor representing the capacitance between the windings. Combinations of pickups, pickup selector switches, tone controls and volume controls all contribute to the output impedance of a guitar but for these the connections and component values are almost always available so the "equivalent circuit" is simply the actual circuit.</p>
+<p>The schematic below shows a fairly complete equivalent circuit for a single pickup with tone and volume controls which describes for example the bridge pickup of a Stratocaster. The format of the circuit was inspired by the introduction of Rod Elliott's article entitled <a href="https://sound-au.com/project214.htm">'Zero Capacitance' Guitar Lead</a>.</p>
+<div class="image-container">
+    <a class="big_linked_images" href="../images/GuitarPickupEquivalentCircuits/Equivalent Circuit Schematic.PNG">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Equivalent Circuit Schematic.PNG">
+    </a>
+</div>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Symbol</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">V<sub>p</sub></td>
+<td style="text-align: left;">Pickup signal voltage i.e. the voltage induced in the pickup by the moving string</td>
+</tr>
+<tr>
+<td style="text-align: right;">L<sub>p</sub></td>
+<td style="text-align: left;">Pickup winding inductance</td>
+</tr>
+<tr>
+<td style="text-align: right;">R<sub>p</sub></td>
+<td style="text-align: left;">Pickup resistance</td>
+</tr>
+<tr>
+<td style="text-align: right;">C<sub>p</sub></td>
+<td style="text-align: left;">Pickup winding capacitance</td>
+</tr>
+<tr>
+<td style="text-align: right;">C<sub>tc</sub></td>
+<td style="text-align: left;">Tone control capacitance</td>
+</tr>
+<tr>
+<td style="text-align: right;">R<sub>tc</sub></td>
+<td style="text-align: left;">Tone control potentiometer resistance</td>
+</tr>
+<tr>
+<td style="text-align: right;">R<sub>tc</sub></td>
+<td style="text-align: left;">Volume control potentiometer resistance</td>
+</tr>
+</tbody>
+</table>
+<p>There are a lot of potential combinations of control and switch settings, so for brevity this article will just consider a single pickup with no tone control and set to maximum volume.</p>
+<p>Guitar cables typically have equivalent shunt capacitances of at least 50 pF/m (see <a href="https://www.shootoutguitarcables.com/guitar-cables-explained/capacitance-chart.html">here</a> for examples) so for any cable of a practical length this will add a non-trivial extra capacitor to the equivalent circuit. From my own measurements the series inductance and resistance of a guitar cable are negligible for high impedance loads and audio frequencies (approximately 0.3 Ω + 1 µH).</p>
+<p>Because the easiest way to attach a guitar to test instrument is using a guitar cable I will measure the combined capacitance of the cable and the guitar. The actual equivalent circuit under consideration is then as shown below.</p>
+<div class="image-container">
+    <a class="big_linked_images" href="../images/GuitarPickupEquivalentCircuits/Simplified Equivalent Circuit Schematic.PNG">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Simplified Equivalent Circuit Schematic.PNG">
+    </a>
+</div>
+
+<p>Here <span class="math">\(C_p + C_c = C_{p+c}\)</span> is the combined capacitance of the pickup and cable. When the volume control is set to maximum these are effectively in parallel and can therefore be summed. <span class="math">\(C_p\)</span> can be measured separately (and rather more easily as an open circuit guitar cable is accurately modelled as a single capacitor for audio frequencies) and then subtracted out to get the capacitance of just the pickup if required.</p>
+<p>The rest of this article will cover measurements to find the values for these components and then provide some typical values based on my measurements.</p>
+<h1 id="measurement-setup">Measurement Setup<a class="headerlink" href="#measurement-setup" title="Permanent link">~</a></h1>
+<p>Measuring the impedance of a guitar is trivially easy with an <a href="https://digilent.com/shop/analog-discovery-2-100ms-s-usb-oscilloscope-logic-analyzer-and-variable-power-supply/">Analog Discovery</a> as this can be configured as a <a href="https://en.wikipedia.org/wiki/Network_analyzer_(electrical)#VNA">vector network analyser</a>.</p>
+<p>Actual VNAs (for example the various versions of the NanoVNA) can  be bought for similar or less money but do not typically cover the full audio band if they cover it at all as they are targeted at RF use.</p>
+<p>Equivalent measurements can be taken with a signal generator and a two-channel oscilloscope but depending on which maths functions and measurement options the oscilloscope has this can be significantly more labour intensive.</p>
+<p>An <a href="https://digilent.com/shop/impedance-analyzer-for-analog-discovery/">impedance analyser add-on</a> can be bought separately for the Analog Discovery. Since I would prefer to measure a guitar by simply plugging it into the measurement device using a standard guitar cable I made my own simple adaptor with a ¼" jack.</p>
+<div class="image-container">
+    <a class="big_linked_images" href="../images/GuitarPickupEquivalentCircuits/Analog Discovery Adaptor.jpg">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Analog Discovery Adaptor.jpg">
+    </a>
+</div>
+
+<div class="image-container">
+    <a class="big_linked_images" href="../images/GuitarPickupEquivalentCircuits/Guitar Impedance Measurement Adaptor.PNG">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Guitar Impedance Measurement Adaptor.PNG">
+    </a>
+</div>
+
+<p>With this the Analog Discovery can supply a test signal into the guitar and then measure the voltage across both the guitar and the current-sensing resistor. The PC software for the Analog Discovery can convert these measurements into the impedance of the guitar.</p>
+<h1 id="raw-data">Raw Data<a class="headerlink" href="#raw-data" title="Permanent link">~</a></h1>
+<div class="image-container">
+    <a class="big_linked_images" href="../images/GuitarPickupEquivalentCircuits/Waveforms Screenshot of Pickup Impedance Measurement.PNG">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Waveforms Screenshot of Pickup Impedance Measurement.PNG">
+    </a>
+</div>
+
+<p>As can be seen from this screenshot the measurements are reassuringly close to a typical frequency response for a under-damped second-order system. The pickup equivalent circuit is very close to an RLC series network so this is the expected frequency response. It can also be seen that the measurements include both the phase and amplitude of the impedance.</p>
+<h1 id="analysis-component-value-inference">Analysis / Component Value Inference<a class="headerlink" href="#analysis-component-value-inference" title="Permanent link">~</a></h1>
+<p>For the guitar that I am initially measuring (and most Stratocasters) the volume control resistance <span class="math">\(R_v = 250 \ \mathrm{k}\Omega\)</span> at least nominally. It would be preferable to measure this value accurately but I cannot think of a way to do that without dismantling the guitar to get direct access to the potentiometer</p>
+<h2 id="method-1-mostly-hand-calculations">Method 1 - Mostly Hand Calculations<a class="headerlink" href="#method-1-mostly-hand-calculations" title="Permanent link">~</a></h2>
+<p>This is probably the simplest and easiest option. In fact, this approach is simple enough that most of the results can be obtained with simple multimeter or LCR meter readings if the measurement frequencies are known.</p>
+<h3 id="pickup-resistance">Pickup Resistance<a class="headerlink" href="#pickup-resistance" title="Permanent link">~</a></h3>
+<p>In the plot of the magnitude and phase of the guitar impedance above the phase is very nearly 0 ° at 20 Hz, which means that the impedance is effectively real at this frequency. There are two purely real element in the equivalent circuit so it can be inferred that</p>
+<div class="math">\begin{equation} \label{eq1} R_p || R_v = |Z|(20 \ \mathrm{Hz}) = 8.32 \ \mathrm{k}\Omega \end{equation}</div>
+<div class="math">\begin{equation} \label{eq1a} R_p = 8.61 \ \mathrm{k}\Omega \end{equation}</div>
+<p>Or in other words at (or close to) DC the inductance of the pickup and the capacitance of the pickup and cable are both negligible. Hence, this value could also be found from a standard DC resistance measurement. If a frequency sweep of the impedance is not being used you just have to be confident that the resistance measurement is being made at a frequency for which the impedances of the pickup inductance and capacitance are negligible.</p>
+<h3 id="pickup-cable-capacitance">Pickup (+Cable) Capacitance<a class="headerlink" href="#pickup-cable-capacitance" title="Permanent link">~</a></h3>
+<p>Similarly the phase from 20 to 50 kHz is very nearly -90 ° so in this region the resistance and inductance of the pickup must be negligible. Hence, rearranging the formula for the impedance of a capacitor allow calculation of the capacitance.</p>
+<div class="math">\begin{equation} \label{eq2} C_{p+c} = \frac{1}{2 \pi \times 40\times 10^3 \times |Z|(40 \ \mathrm{kHz})} = 579 \ \mathrm{pF} \end{equation}</div>
+<p>This could also be measured with a multimeter or RLC meter as long as the measurement frequency is safely above the resonant peak in the impedance frequency response. For most pickups it is probably safe to say that a capacitance measurement above 20 kHz will give a fairly accurate measurement.</p>
+<h3 id="pickup-inductance">Pickup Inductance<a class="headerlink" href="#pickup-inductance" title="Permanent link">~</a></h3>
+<h4 id="hand-calculable">Hand-calculable<a class="headerlink" href="#hand-calculable" title="Permanent link">~</a></h4>
+<p>From the graph of the impedance it is reasonable to assume that damping of the network is relatively low as the peak is more than ten times the low frequency value. If one neglects the effect of damping on the natural frequency a reasonable approximation of the inductance can be found by re-arranging the equation for the undamped resonant frequency of a series RLC circuit [<span class="math">\(\ref{eq3}\)</span>] as this only depends on the inductance and the capacitance and we have already estimated the  capacitance.</p>
+<div class="math">\begin{equation} \label{eq3} \omega_0 = \frac{1}{\sqrt{L_p C_{p+c}}} \end{equation}</div>
+<p>The resonant frequency <span class="math">\(\omega_0\)</span> can be read from the plot above. In this case the peak is at <span class="math">\(4.33 \ \mathrm{kHz}\)</span>  and so <span class="math">\(\omega_0 = 27.3\times10^3 \ \mathrm{rad/s}\)</span>.</p>
+<div class="math">\begin{equation} \label{eq4} L_p = \frac{1}{\omega_0^2 C_{p+c}} = 2.33 \ \mathrm{H} \end{equation}</div>
+<h4 id="slightly-more-accurate-numerical-solution">Slightly more Accurate, Numerical Solution<a class="headerlink" href="#slightly-more-accurate-numerical-solution" title="Permanent link">~</a></h4>
+<p>This undamped natural frequency is not the exact frequency at which the impedance is greatest when there is damping involved. When considering the amplitude response of an RLC circuit there are similar concepts of "undamped" and "damped" natural frequency. <a href="https://en.wikipedia.org/wiki/RLC_circuit#Underdamped_response">This Wikipedia page</a> covers most of the maths for the amplitude responses i.e. the voltage and current through the network vs frequency. </p>
+<p>The expression for the actual peak frequency <span class="math">\(\omega_d\)</span> is little messy to derive. It can be expressed relatively neatly using the standard parameters that are used to characterise RLC networks. Namely the undamped natural frequency <span class="math">\(\omega_0 = \frac{1}{\sqrt{L_p C_{p+c}}}\)</span> as used above, the attenuation <span class="math">\(\alpha = \frac{R_p}{2 L_p}\)</span> and the damping factor <span class="math">\(\zeta = \frac{\alpha}{\omega_0} = \frac{R_p}{2} \sqrt{\frac{C_p}{L_p}}\)</span>.</p>
+<div class="math">\begin{equation} \label{eq5} \omega_d^2 = \omega_0^2 \left( \sqrt{1 + 8 \zeta^2 + \frac{2 R_p}{R_v}} - 4 \zeta^2 \right) \end{equation}</div>
+<p>In terms of just the component values this expression is</p>
+<div class="math">\begin{equation} \label{eq7} \omega_d^2 = \frac{1}{C_{p+c} L_p} \sqrt{\frac{2C_{p+c}R_p^2}{L_p} + \frac{2 R_p}{R_v} + 1 } - \frac{R_p^2}{L_p^2}\end{equation}</div>
+<p>This can technically be solved symbolically for <span class="math">\(L_p\)</span> but the result is ridiculously unwieldly as it ends up being a quartic equation in <span class="math">\(L_p\)</span>. Numerically solving the equation using the values for the other component values found above yields</p>
+<div class="math">\begin{equation} \label{eq8} L_p = 2.41 \ \mathrm{H} \end{equation}</div>
+<p>In this case this value is close (within 4%) to the value found by the simpler method of <span class="math">\(\ref{eq3}\)</span> and <span class="math">\(\ref{eq4}\)</span>. This is because the extra factor in <span class="math">\(\ref{eq5}\)</span> that relates <span class="math">\(\omega_d\)</span> to <span class="math">\(\omega_0\)</span> is very close to unity for small values of <span class="math">\(\zeta\)</span> i.e. for pickups that have a relatively sharp resonance in the impedance vs frequency plot and when <span class="math">\(R_p \ll R_v\)</span>. For pickups with a much wider resonant peak this factor may be significant. If the damping is high enough there may not be a discernible peak, or it may at least be very hard to determine the frequency of the peak accurately.</p>
+<h2 id="method-2-entirely-numerical">Method 2 - Entirely Numerical<a class="headerlink" href="#method-2-entirely-numerical" title="Permanent link">~</a></h2>
+<p>Since the impedance of the network only contains three unknown variables (or four if the volume control resistance is treated as an unknown) and is of a known form it should be relatively easy to use curve-fitting techniques to find a "least-squares" set of component values.</p>
+<p>This method should also work where Method 1 fails, for example if the impedance at low frequencies is not effectively resistive or if there is no clear resonant peak.</p>
+<p>I have tested this using the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html"><code>scipy.optimize.curve_fit</code> function</a>, an example Python script is shown below. The PC software for the Analog Discovery is called Waveforms and can export the measurements as CSV files. The script loads that file and then tries to find component values to get the closest possible to the measured <span class="math">\(|Z|\)</span> data.</p>
+<p>To do this it needs a Python function that represents the expression for the magnitude of the impedance. This expression is</p>
+<div class="math">\begin{equation} \label{eq9} \left|{Z}\right| = \sqrt{ \frac{R_{v}^{2} \left(L_p^{2} \omega^{2} + R_p^{2}\right)}{C_{p+c}^{2} L_p^{2} R_{v}^{2} \omega^{4} + C_{p+c}^{2} R_p^{2} R_{v}^{2} \omega^{2} - 2 C_{p+c} L_p R_{v}^{2} \omega^{2} + L_p^{2} \omega^{2} + R_p^{2} + 2 R_p R_{v} + R_{v}^{2}} }\end{equation}</div>
+<p>which is implemented in <code>fit_func</code> below.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="c1"># Analog Discovery Software outputs a pre-amble with extra information about the</span>
+<span class="c1"># configuration that was used. These lines all start with &#39;#&#39; so use the</span>
+<span class="c1"># comment argument to skip them.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Assign the frequency values to a variable with a shorter name and construct</span>
+<span class="c1"># the magnitude of the impedance from the real and imaginary parts.</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;|Z|&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Real (Ohm)&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Imag (Ohm)&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">fit_func</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">R_v</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expression for |Z|.&quot;&quot;&quot;</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="kp">sqrt</span><span class="p">(</span><span class="n">R_v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">((</span><span class="n">L</span><span class="o">*</span><span class="n">omega</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span>
+        <span class="p">((</span><span class="n">C</span><span class="o">*</span><span class="n">L</span><span class="o">*</span><span class="n">R_v</span><span class="o">*</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">C</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">R_v</span><span class="o">*</span><span class="n">omega</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">L</span><span class="o">*</span><span class="n">R_v</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">L</span><span class="o">*</span><span class="n">omega</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">R_v</span> <span class="o">+</span> <span class="n">R_v</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+
+<span class="n">initial_parameter_guess</span> <span class="o">=</span> <span class="p">(</span><span class="mf">5.0e3</span><span class="p">,</span> <span class="mf">200.0e3</span><span class="p">,</span> <span class="mf">100.0e-12</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">popt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">fit_func</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;|Z|&quot;</span><span class="p">],</span>
+                    <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameter_guess</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">popt</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Running this with the data that I have been using for the calculations above yields the following values. Note that I set it up to find an optimal value of <span class="math">\(R_v\)</span> rather than using the nominal value as I found that this allowed it to find a better fit.</p>
+<p>I found that providing <code>scipy.optimize.curve_fit</code> with reasonable initial guesses for the parameter values helped find a good fit. I experimented with using the <code>bounds</code> parameter to restrict the valid range of values for each parameter but I found that this actually made the fits much worse.</p>
+<p>The table below shows the values found by the curve fit and compares the values found by the previous more manual method.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Component</th>
+<th style="text-align: center;">Values from Curve Fit</th>
+<th style="text-align: center;">Values from Manual Methods</th>
+<th style="text-align: center;">Difference between Estimates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="math">\(R_p\)</span></td>
+<td style="text-align: center;">8.68 kΩ</td>
+<td style="text-align: center;">8.61 kΩ</td>
+<td style="text-align: center;">0.81 %</td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math">\(R_v\)</span></td>
+<td style="text-align: center;">291 kΩ</td>
+<td style="text-align: center;">250 kΩ (nom.)</td>
+<td style="text-align: center;">16 %</td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math">\(C_{p+c}\)</span></td>
+<td style="text-align: center;">613 pF</td>
+<td style="text-align: center;">579 pF</td>
+<td style="text-align: center;">5.9 %</td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="math">\(L_p\)</span></td>
+<td style="text-align: center;">2.24 H</td>
+<td style="text-align: center;">2.41 H</td>
+<td style="text-align: center;">7.6 %</td>
+</tr>
+</tbody>
+</table>
+<p>The differences in these values are relatively small. If the volume potentiometer value were measured directly they probably would be even smaller. As it stands either method is probably adequately accurate for most general purpose simulations as there is likely to be variation between nominally identical guitars that is of comparable magnitude.</p>
+<h1 id="comparison-of-results">Comparison of Results<a class="headerlink" href="#comparison-of-results" title="Permanent link">~</a></h1>
+<p>The image below shows the measured impedance (magnitude) and the calculated impedance using <span class="math">\(\ref{eq9}\)</span> and each of the sets of component values. The differences betwen the lines are not terribly visible so the bottom plot is the percentage difference between each kind of estimate and the measured data.</p>
+<div class="image-container">
+    <a class="wide_linked_images" href="../images/GuitarPickupEquivalentCircuits/Estimation Accuracy Comparison.png">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Estimation Accuracy Comparison.png">
+    </a>
+</div>
+
+<p>The "manual method" with the simpler calculation for <span class="math">\(L_p\)</span> has a maximum error of 6.5%. The more accurate method for estimating <span class="math">\(L_p\)</span> reduces the maximum error to 6%. The least-squares curve-fit method has maximum (absolute) error of 4%.</p>
+<p>The overall performance is broadly equivalent but it is worth noting that the curve-fit method does seem to estimate the behaviour around the peak in the impedance more accurately than the manual method. The manual method effectively achieves a minimum error at the lowest and highest frequencies in the measured data simply due to using the impedance values at those frequencies in the calculations.</p>
+<h1 id="separating-out-cable-capacitance">Separating out Cable Capacitance<a class="headerlink" href="#separating-out-cable-capacitance" title="Permanent link">~</a></h1>
+<p>For all the measurements above I was connecting the guitar to the Analog Discovery adaptor using an unbranded 3 m guitar lead. Measuring the capacitance of this cable i.e. between tip and ring with an <a href="https://www.peakelec.co.uk/acatalog/lcr45-lcr-impedance-meter.html">LCR45 meter</a> yielded <span class="math">\(C_c = 380  \ \mathrm{pF}\)</span>. This is 127 pF/m which is relatively high for a guitar lead but not outlandish.</p>
+<p>This can be subtracted from the <span class="math">\(C_{p+c}\)</span> values above to isolate the capacitance of just the guitar, which is the pickup capacitance plus any other sources of capacitance from the controls or internal wiring.</p>
+<p>For my measurements <span class="math">\(C_p = 233  \ \mathrm{pF}\)</span> for the curve fit method and <span class="math">\(C_p = 199  \ \mathrm{pF}\)</span> for the more manual method.</p>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">~</a></h1>
+<p>The image below summarises the values that were found by the slightly more accurate curve-fitting method.</p>
+<div class="image-container">
+    <a class="wide_linked_images" href="../images/GuitarPickupEquivalentCircuits/Equivalent Circuit Schematic with Values.PNG">
+        <img class=big_rounded_image alt="thumb" src="../images/GuitarPickupEquivalentCircuits/Equivalent Circuit Schematic with Values.PNG">
+    </a>
+</div>
+
+<p>These values produce an equivalent circuit that matches the measured data to within a maximum absolute error of 4%.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; 2023 </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="dark"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Macalister Electronics ",
+  "url" : "",
+  "image": "../../images/icon.png",
+  "description": "Guitar Effects etc."
+}
+</script>
+
+
+</body>
+</html>
